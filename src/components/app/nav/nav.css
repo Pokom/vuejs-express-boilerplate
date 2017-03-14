@@ -1,0 +1,13 @@
+/*
+  You can use BEM style even though you are scoped. Helps to reason about
+  your styles.
+*/
+.ev-appnav__logo {
+  width: 40px;
+}
+.ev-appnav__search {
+  margin-right: 10px;
+}
+.ev-appnav__logout {
+  margin-top: 1px;
+}

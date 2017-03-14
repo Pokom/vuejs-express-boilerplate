@@ -1,0 +1,35 @@
+<div class="container">
+  <form @submit.prevent="validateBeforeSubmit" v-if="!registerUserStatus">
+      <div class="form-group row" :class="{'has-error': errors.has('email') }">
+        <label class="col-4 col-form-label" for="inputEmail">Email address</label>
+        <div class="col-8">
+          <input v-model="username" type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+          <small class="text-muted">We'll never share your email with anyone else.</small>
+          <p class="text-danger" v-if="errors.has('username')">{{ errors.first('username') }}</p>
+          <p class="text-danger" v-if="errorMessage">
+            {{errorMessage}}
+          </p>
+        </div>
+      </div>
+      <div class="form-group row" :class="{'has-error': errors.has('password') }">
+        <label class="col-4 col-form-label" for="inputPassword">Password</label>
+        <div class="col-8">
+          <input v-model="password" type="password" class="form-control" id="inputPassword" placeholder="Enter Password">
+          <p class="text-danger" v-if="errors.has('password')">{{ errors.first('password') }}</p>
+        </div>
+      </div>
+      <div class="form-group row" :class="{'has-error': errors.has('confirmPassword') }">
+        <label class="col-4 col-form-label" for="inputPasswordConfirm">Confirm Password</label>
+        <div class="col-8">
+          <input v-model="confirmPassword" type="password" class="form-control" id="inputPasswordConfirm" placeholder="Confirm Password">
+          <p class="text-danger" v-if="errors.has('confirmPassword')">{{ errors.first('confirmPassword') }}</p>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <a href="/" class="btn btn-primary">Cancel</a>
+    </form>
+    <div class="success" v-if="registerUserStatus">
+      <h3> User Creation Successful! </h3>
+      <a href="/login" class="btn btn-primary">Proceed to Login</a>
+    </div>
+</div>
